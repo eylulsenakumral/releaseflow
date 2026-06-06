@@ -68,8 +68,14 @@ export class GitOperations {
       return this.getLastCommits(100);
     }
 
-    const log = await this.git.log({ from: lastTag.hash, to: 'HEAD' });
-    return log.all.slice(1).map(c => this.parseCommit(c.message)); // skip the tag commit itself
+    if (!lastTag.hash) {
+      // Tag hash not available, get all commits
+      return this.getLastCommits(100);
+    }
+
+    // Use git log range syntax via simple-git
+    const log = await this.git.log([`${lastTag.hash}..HEAD`]);
+    return log.all.map(c => this.parseCommit(c.message));
   }
 
   /**
