@@ -85,17 +85,19 @@ export async function release(options: ReleaseOptions = {}): Promise<void> {
   }
   console.log('');
 
-  // Execute release steps
+  // === File operations (always execute, even with --skip-git) ===
+
+  // Update package.json version
+  await updatePackageVersion(newVersion, config);
+  console.log(chalk.green(`✓ Updated package.json to ${newVersion}`));
+
+  // Update changelog
+  const changelogPath = join(process.cwd(), config.changelogFile);
+  const changelog = updateChangelogFile(newVersion, sections, changelogPath, config.dryRun);
+  console.log(chalk.green(`✓ Updated ${config.changelogFile}`));
+
+  // === Git operations (skip with --skip-git) ===
   if (!options.skipGit) {
-    // Update package.json version
-    await updatePackageVersion(newVersion, config);
-    console.log(chalk.green(`✓ Updated package.json to ${newVersion}`));
-
-    // Update changelog
-    const changelogPath = join(process.cwd(), config.changelogFile);
-    const changelog = updateChangelogFile(newVersion, sections, changelogPath, config.dryRun);
-    console.log(chalk.green(`✓ Updated ${config.changelogFile}`));
-
     // Create git tag
     await git.createTag(newVersion, config);
     console.log(chalk.green(`✓ Created git tag ${config.tagPrefix}${newVersion}`));
@@ -107,6 +109,8 @@ export async function release(options: ReleaseOptions = {}): Promise<void> {
     // Create GitHub release
     await createGitHubRelease(newVersion, changelog, config);
     console.log(chalk.green(`✓ Created GitHub release`));
+  } else {
+    console.log(chalk.yellow('⚠️  Skipped git operations (tag, push, GitHub release)'));
   }
 
   if (!options.skipNpm) {
