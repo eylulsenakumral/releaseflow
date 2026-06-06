@@ -20,10 +20,12 @@ ReleaseFlow is different:
 ## Quick Start
 
 ```bash
-# Install globally
-npm install -g releaseflow
+# Clone and install
+git clone https://github.com/eylulsenakumral/releaseflow.git
+cd releaseflow
+npm install
 
-# Or use with npx (no install needed)
+# Run
 npx releaseflow
 ```
 
