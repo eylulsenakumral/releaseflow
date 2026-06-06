@@ -1,0 +1,1 @@
+{"version":3,"file":"release.d.ts","sourceRoot":"","sources":["../../src/commands/release.ts"],"names":[],"mappings":"AAAA;;GAEG;AAeH,MAAM,WAAW,cAAc;IAC7B,MAAM,CAAC,EAAE,OAAO,CAAC;IACjB,OAAO,CAAC,EAAE,OAAO,CAAC;IAClB,OAAO,CAAC,EAAE,OAAO,CAAC;CACnB;AAED;;GAEG;AACH,wBAAsB,OAAO,CAAC,OAAO,GAAE,cAAmB,GAAG,OAAO,CAAC,IAAI,CAAC,CAoGzE"}

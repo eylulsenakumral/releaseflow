@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd /tmp && rm -rf test-releaseflow && git clone https://github.com/eylulsenakumral/releaseflow.git test-releaseflow && cd test-releaseflow && npm install && npx releaseflow --version 2>&1\"...",
+  "error": "Exit code 1\nCloning into 'test-releaseflow'...\nnpm warn deprecated read-pkg-up@11.0.0: Renamed to read-package-up\n\nadded 123 packages, and audited 124 packages in 5s\n\n37 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\nnode:internal/modules/esm/resolve:275\n    throw new ERR_MODULE_NOT_FOUND(\n          ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/test-releaseflow/dist/index.js' imported from /tmp/test-releaseflow/bin/releaseflow\n    at finalizeRe...",
+  "timestamp": "2026-06-06T04:37:32.080Z",
+  "retry_count": 2
+}

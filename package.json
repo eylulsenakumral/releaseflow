@@ -1,5 +1,5 @@
 {
-  "name": "releaseflow",
+  "name": "@eylulsenakumral/releaseflow",
   "version": "0.1.0",
   "description": "Zero-config release automation for JavaScript packages. Ship in 5 seconds with conventional commits → changelog, git tag, GitHub release, npm publish.",
   "main": "dist/index.js",
@@ -58,5 +58,9 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "scope": "@eylulsenakumral"
   }
 }
