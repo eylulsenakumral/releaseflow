@@ -1,7 +1,7 @@
 {
   "name": "releaseflow",
   "version": "0.1.0",
-  "description": "Zero-config release automation CLI for JavaScript packages",
+  "description": "Zero-config release automation for JavaScript packages. Ship in 5 seconds with conventional commits → changelog, git tag, GitHub release, npm publish.",
   "main": "dist/index.js",
   "bin": {
     "releaseflow": "./bin/releaseflow"
@@ -10,16 +10,23 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepublish:check": "bash scripts/prepublish-check.sh",
+    "test": "node dist/index.js --help"
   },
   "keywords": [
     "release",
+    "release-automation",
     "changelog",
     "semantic-version",
     "npm",
     "cli",
     "automation",
-    "conventional-commits"
+    "conventional-commits",
+    "zero-config",
+    "github-release",
+    "version-bump",
+    "git-tag"
   ],
   "author": "ReleaseFlow CLI",
   "license": "MIT",

@@ -1,0 +1,6 @@
+# .npmrc.example - Copy to .npmrc in your project
+# provenance for npm registry security
+provenance=true
+
+# if using private registry, uncomment:
+# @your-org:registry=https://npm.yourcompany.com
