@@ -1,0 +1,55 @@
+{
+  "name": "releaseflow",
+  "version": "0.1.0",
+  "description": "Zero-config release automation CLI for JavaScript packages",
+  "main": "dist/index.js",
+  "bin": {
+    "releaseflow": "./bin/releaseflow"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "release",
+    "changelog",
+    "semantic-version",
+    "npm",
+    "cli",
+    "automation",
+    "conventional-commits"
+  ],
+  "author": "ReleaseFlow CLI",
+  "license": "MIT",
+  "files": [
+    "bin",
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eylulsenakumral/releaseflow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eylulsenakumral/releaseflow/issues"
+  },
+  "homepage": "https://github.com/eylulsenakumral/releaseflow#readme",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "conventional-commits-parser": "^4.0.0",
+    "execa": "^9.5.2",
+    "read-pkg-up": "^11.0.0",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

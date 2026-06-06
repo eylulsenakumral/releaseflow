@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/releaseflow-cli/releaseflow/main/.releaserc.schema.json",
+  "mainBranch": "main",
+  "tagPrefix": "v",
+  "changelogFile": "CHANGELOG.md"
+}
