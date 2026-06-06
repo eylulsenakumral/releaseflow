@@ -77,11 +77,22 @@ export class GitOperations {
    */
   async getTags(): Promise<TagInfo[]> {
     const tags = await this.git.tags();
+    const tagData = await this.git.tag(['-l', '--format=%(refname:short)%00%(objectname)']);
+
+    // Parse tag data to get hashes
+    const tagMap = new Map<string, string>();
+    for (const line of tagData.split('\n')) {
+      const [name, hash] = line.split('\0');
+      if (name && hash) {
+        tagMap.set(name, hash);
+      }
+    }
+
     return tags.all
       .filter(t => t.match(/^v?\d+\.\d+\.\d+$/))
       .map(name => ({
         name,
-        hash: '', // will be resolved if needed
+        hash: tagMap.get(`refs/tags/${name}`) || '',
         version: name.replace(/^v/, ''),
       }))
       .sort((a, b) => {
