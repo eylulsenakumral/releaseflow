@@ -164,7 +164,12 @@ export class GitOperations {
     }
 
     await this.git.tag(['-d', lastTag]);
-    await this.git.push(['--delete', 'origin', 'refs/tags/' + lastTag]);
+    try {
+      await this.git.push(['--delete', 'origin', 'refs/tags/' + lastTag]);
+    } catch {
+      // No remote or push failed - tag deleted locally
+      console.warn(`Could not delete remote tag ${lastTag} (may not exist on remote)`);
+    }
     return lastTag;
   }
 
