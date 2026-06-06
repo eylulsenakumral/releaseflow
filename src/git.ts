@@ -92,7 +92,7 @@ export class GitOperations {
       .filter(t => t.match(/^v?\d+\.\d+\.\d+$/))
       .map(name => ({
         name,
-        hash: tagMap.get(`refs/tags/${name}`) || '',
+        hash: tagMap.get(name) || '',
         version: name.replace(/^v/, ''),
       }))
       .sort((a, b) => {
